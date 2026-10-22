@@ -8,8 +8,8 @@ jobs:
   say-hello:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository code
-      uses: actions/checkout@v4
+      - name: Checkout repository code
+        uses: actions/checkout@v4
 
-    - name: Run a Simple echo command
-      uses: echo "Hello Ashok! this is me triggered by a push Event";
+      - name: Run a Simple echo command
+        uses: echo "Hello Ashok! this is me triggered by a push Event";
