@@ -13,3 +13,6 @@ jobs:
 
       - name: Run a Simple echo command
         run: echo "Hello Ashok! this is me triggered by a push Event";
+
+      - name: Run command tree to view file structure
+        run: tree
