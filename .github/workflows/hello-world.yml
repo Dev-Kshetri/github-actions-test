@@ -1,18 +1,33 @@
-name: Hello World Workflow
+name: Chapter 2 Workflow Triggers
 
 on:
+  # 1. Trigger on push to main, but ignore changes to Markdown files
   push:
-    branches: ["main"]
+    branches: [ "main" ]
+    paths-ignore:
+      - '**.md'
+
+  # 2. Manual trigger button in GitHub UI with a dropdown menu
+  workflow_dispatch:
+    inputs:
+      user_name:
+        description: 'Choose who to greet'
+        required: true
+        default: 'Ashok'
+        type: choice
+        options:
+          - Ashok
+          - Ritu
+          - Kiara
 
 jobs:
-  say-hello:
+  test-triggers:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Run a Simple echo command
-        run: echo "Hello Ashok! this is me triggered by a push Event";
-
-      - name: Run command tree to view file structure
-        run: tree
+      - name: Greet selected user
+        run: |
+          echo "Workflow triggered successfully!"
+          echo "Hello, ${{ inputs.user_name }}!"
